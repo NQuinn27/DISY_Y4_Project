@@ -9,10 +9,6 @@ package smarthome;
  *
  * @author niall
  */
-public class SmartHome {
-
-    public static void main(String[] args) {
-        // TODO create the GUI here
-    }
+class _LivingRoomImplBase {
     
 }

@@ -3,5 +3,7 @@ module SmartHome
   interface LivingRoom
   {
     string getLightStatus();
+    void lockDoor();
+    void unlockDoor();
   };
 };
