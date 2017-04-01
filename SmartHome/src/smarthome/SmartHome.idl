@@ -1,7 +1,11 @@
-module SmartHome
+
+module SmartHomeModule
+
 {
   interface LivingRoom
   {
     string getLightStatus();
+    void lockDoor();
+    void unlockDoor();
   };
 };

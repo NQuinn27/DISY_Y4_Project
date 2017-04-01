@@ -4,18 +4,21 @@
  * and open the template in the editor.
  */
 package smarthome;
-
 /**
  *
  * @author niall
  */
-public class SmartHome {
-
-    public static void main(String[] args) {
-        // TODO create the GUI here
-        // Temporary
+public class LivingRoomServant extends SmartHomeModule._LivingRoomImplBase {
+    
+    public String getLightStatus() {
+        return "";
+    }
+    
+    public void lockDoor() {
         
-        
+    }
+    
+    public void unlockDoor() {
         
     }
     
