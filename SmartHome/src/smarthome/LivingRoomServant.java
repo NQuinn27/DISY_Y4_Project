@@ -4,11 +4,22 @@
  * and open the template in the editor.
  */
 package smarthome;
-
 /**
  *
  * @author niall
  */
-public class LivingRoomServant extends _LivingRoomImplBase {
+public class LivingRoomServant extends SmartHomeModule._LivingRoomImplBase {
+    
+    public String getLightStatus() {
+        return "";
+    }
+    
+    public void lockDoor() {
+        
+    }
+    
+    public void unlockDoor() {
+        
+    }
     
 }
