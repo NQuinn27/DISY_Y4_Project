@@ -1,0 +1,7 @@
+module SmartHome
+{
+  interface LivingRoom
+  {
+    string getLightStatus();
+  };
+};
