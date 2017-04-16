@@ -52,6 +52,5 @@ public class SmartHomeServer{
                     System.err.println("Error: "+e);
                     e.printStackTrace(System.out);
 		}
-
 	}
 }
