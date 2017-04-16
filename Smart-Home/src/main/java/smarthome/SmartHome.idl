@@ -14,6 +14,17 @@ module SmartHomeModule
     void lockDoor();
     void unlockDoor();
     void setTemp();
-    string getTemp();       
+    string getTemp();  
+	
    };
+
+ interface Outdoors
+   {
+    string getGardenLightStatus();
+	void setLightStatus 
+    void lockDoor();
+    void unlockDoor();
+    void openGate();
+    string closeGate();     
+   
 };
