@@ -14,12 +14,20 @@ public class LivingRoomServant extends SmartHomeModule._LivingRoomImplBase {
         return "";
     }
     
-    public void lockDoor() {
-        
+    public String turnLightsOn() {
+        return "Lights are now on";
     }
     
-    public void unlockDoor() {
-        
+    public String turnLightsOff() {
+        return "Lights are now off";
+    }
+    
+    public String lockDoor() {
+        return "Door is now locked";
+    }
+    
+    public String unlockDoor() {
+        return "Door is now unlocked";
     }
     
 }
