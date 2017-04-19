@@ -26,6 +26,13 @@ public class HTTPServer {
         server.setExecutor(null); // creates a default executor
         server.start();
     }
+    
+    static class HomeHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange t) throws IOException {
+            
+        }
+    }
 
     static class LivingRoomHandler implements HttpHandler {
         @Override
@@ -33,6 +40,10 @@ public class HTTPServer {
             String query = t.getRequestURI().getQuery();
             String res = SmartHome.livingRoomHandler(query);
             System.out.print(res);
+            t.sendResponseHeaders(200, res.length());
+            OutputStream os = t.getResponseBody();
+            os.write(res.getBytes());
+            os.close();
         }
     }
 }
