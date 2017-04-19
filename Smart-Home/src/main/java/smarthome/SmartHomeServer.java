@@ -11,7 +11,7 @@ public class SmartHomeServer {
 	public static void main (String args[]) {
 		try{
                     
-                   Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49000");
+                   Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49001");
                     ORB orb = ORB.init(args, props);
 
                     NameComponent nc[] = new NameComponent[1];

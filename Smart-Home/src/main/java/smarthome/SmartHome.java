@@ -25,12 +25,13 @@ public class SmartHome {
     public static void main(String[] args) {
         // TODO create the GUI here
         // Temporary
+        System.out.println("Main");
     }
      
     public static String livingRoomHandler(String method) {
         try {
             NameComponent nc[]= new NameComponent[2];    
-            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49000");
+            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49001");
             ORB orb = ORB.init(new String[0], props);
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             rootCtx = NamingContextExtHelper.narrow(objRef);
