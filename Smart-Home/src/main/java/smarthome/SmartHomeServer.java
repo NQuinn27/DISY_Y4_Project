@@ -17,6 +17,7 @@ public class SmartHomeServer {
                     NameComponent nc[] = new NameComponent[1];
 
                     LivingRoomServant livingRoomRef = new LivingRoomServant();
+                    
 
                     //connecting the servant to the orb
                     orb.connect(livingRoomRef);

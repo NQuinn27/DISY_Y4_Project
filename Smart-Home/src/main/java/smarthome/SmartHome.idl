@@ -9,4 +9,23 @@ module SmartHomeModule
     string lockDoor();
     string unlockDoor();
   };
+
+   interface Kitchen
+   {
+    string getLightStatus();
+    void lockDoor();
+    void unlockDoor();
+    void setTemp();
+    string getTemp();  	
+   };
+
+ interface Outdoors
+   {
+    string getGardenLightStatus();
+    void setLightStatus(); 
+    void lockDoor();
+    void unlockDoor();
+    void openGate();
+    string closeGate();     
+   };
 };
