@@ -7,20 +7,20 @@ This project is for Distributed Systems Year 4 in National College of Ireland. A
 - Ronan Ratty 
 
 ## Usage
-Netbeans Project should have 2 run configurations:
-CORBA - main class smarthome.SmartHomeServer
-HTTP - main class jmdns.HttpServer
+Netbeans Project should have 2 run configurations:  
+CORBA - main class smarthome.SmartHomeServer  
+HTTP - main class jmdns.HttpServer  
 
-1 - Start the ORB server `tnameserv -ORBInitialPort 49001`
-2 - Run the CORBA build configuration
-3 - Run the HTTP build configuration
-4 - Use HTTP to activate the CORBA Methods
+1 - Start the ORB server `tnameserv -ORBInitialPort 49001`  
+2 - Run the CORBA build configuration  
+3 - Run the HTTP build configuration  
+4 - Use HTTP to activate the CORBA Methods  
 
 ### Current Methods
-http://localhost:8001/livingroom?turnLightsOn
-http://localhost:8001/livingroom?turnLightsOff
-http://localhost:8001/livingroom?lockDoor
-http://localhost:8001/livingroom?unlockDoor
+http://localhost:8001/livingroom?turnLightsOn  
+http://localhost:8001/livingroom?turnLightsOff  
+http://localhost:8001/livingroom?lockDoor  
+http://localhost:8001/livingroom?unlockDoor  
 
 All this does is find the method on CORBA tree and invoke it, returning the response which is rendered on the webpage. Needs work to integrate to GUI
 
