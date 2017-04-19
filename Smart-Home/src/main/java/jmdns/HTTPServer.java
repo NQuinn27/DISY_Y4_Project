@@ -21,7 +21,7 @@ import smarthome.SmartHome;
 public class HTTPServer {
 
     public static void main(String[] args) throws Exception {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(8001), 0);
         server.createContext("/livingroom", new LivingRoomHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
@@ -31,11 +31,8 @@ public class HTTPServer {
         @Override
         public void handle(HttpExchange t) throws IOException {
             String query = t.getRequestURI().getQuery();
-            try {
-                String res = SmartHome.handle("livingroom", query);
-            } catch (InvalidName ex) {
-                Logger.getLogger(HTTPServer.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String res = SmartHome.livingRoomHandler(query);
+            System.out.print(res);
         }
     }
 }
