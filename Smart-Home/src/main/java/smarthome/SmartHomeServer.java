@@ -17,6 +17,7 @@ public class SmartHomeServer {
                     NameComponent nc[] = new NameComponent[1];
 
                     LivingRoomServant livingRoomRef = new LivingRoomServant();
+                    BathroomServant bathroomRef = new BathroomServant();
                     
 
                     //connecting the servant to the orb
@@ -28,7 +29,7 @@ public class SmartHomeServer {
 
                     NamingContext rootCtx = NamingContextHelper.narrow(objRef);
                         
-                    //Add context 1 to root
+                    //Add living room to root
                     nc[0] = new NameComponent("Living Room Context", "Context");
                     NamingContext Ctx1 = rootCtx.bind_new_context(nc);
                     System.out.println("Context 'Living Room Context' added to Name Space.");
@@ -40,6 +41,19 @@ public class SmartHomeServer {
                     Ctx1.rebind(nc, livingRoomRef);
                     System.out.println("Object '\"Living Room Service' added to Living Room Context.");
                         
+                    //Add bathroom to root
+                    nc[0] = new NameComponent("Bathroom Context", "Context");
+                    NamingContext Ctx2 = rootCtx.bind_new_context(nc);
+                    System.out.println("Context 'Bathroom Context' added to Name Space.");
+                    
+                     //Add Living Room Service to Living Room Context
+                    nc[0] = new NameComponent("Bathroom Service", "Object");
+                    //NameComponent path[] = {nc};
+                    //Binding the name to an object that is stored in the Naming Context
+                    Ctx2.rebind(nc, bathroomRef);
+                    System.out.println("Object '\"Bathroom Service' added to Living Room Context.");
+                    
+                    
                     // wait for invocations from clients
                     orb.run();
                         

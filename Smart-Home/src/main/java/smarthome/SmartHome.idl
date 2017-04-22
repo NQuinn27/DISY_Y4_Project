@@ -28,4 +28,11 @@ module SmartHomeModule
     void openGate();
     string closeGate();     
    };
+
+   interface Bathroom {
+    string turnImmersionOn();
+    string turnImmersionOff();
+    string turnFanOn();
+    string turnFanOff();
+   };
 };

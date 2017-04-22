@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Smart Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+          #alert {
+            display: none;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="alert"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Living Room </h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?turnLightsOn')">Turn Lights On</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?turnLightsOff')">Turn Lights Off</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?lockDoor')">Lock Door</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?unlockDoor')">Unlock Door</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Kitchen </h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?turnLightsOn')">Turn Lights On</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?turnLightsOff')">Turn Lights Off</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?lockDoor')">Lock Door</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('livingroom?unlockDoor')">Unlock Door</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Bathroom </h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnimmersionOn')">Turn Immersion On</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnimmersionOff')">Turn Immersion Off</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnfanOn')">Turn Fan On</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnfanOff')">Turn Fan Off</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+<script type="text/javascript">
+  const endpointBase = 'http://localhost:8002/';
+  console.log(endpoint);
+  var icd10s = [];
+
+  function fetch(path) {
+    console.log("Here");
+    const sendpoint = endpointBase + path;
+    console.log(sendpoint);
+    const flash = document.querySelector('#alert');
+    $.ajax({ url: sendpoint,
+      type: 'GET',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      success: function(response) {
+        console.log(response);
+        const html = `<div class="alert alert-success"><strong>Success!</strong> ${response}</div>`;
+        const flash = document.querySelector('.alert');
+        flash.style.display = 'block';
+        flash.innerHTML = html;
+        setTimeout(function(){ flash.style.display = 'none'; }, 3000);
+      }
+    });
+  }
+
+</script>
+</html>

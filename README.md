@@ -16,6 +16,11 @@ HTTP - main class jmdns.HttpServer
 3 - Run the HTTP build configuration  
 4 - Use HTTP to activate the CORBA Methods  
 
+##HTML Page
+Uses ajax to call the url schemes defined in HTTPServer and displays the response from CORBA
+
+`http://localhost:8002/index.html`
+
 ### Current Methods
 http://localhost:8001/livingroom?turnLightsOn  
 http://localhost:8001/livingroom?turnLightsOff  

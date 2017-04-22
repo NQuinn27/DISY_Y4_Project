@@ -5,6 +5,8 @@
  */
 package smarthome;
 
+import SmartHomeModule.Bathroom;
+import SmartHomeModule.BathroomHelper;
 import SmartHomeModule.LivingRoom;
 import SmartHomeModule.LivingRoomHelper;
 import java.util.Properties;
@@ -65,6 +67,42 @@ public class SmartHome {
             return "Invalid Name";
         }
     }
-        
     
+    public static String bathroomHandler(String method) {
+        try {
+            NameComponent nc[]= new NameComponent[2];    
+            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49001");
+            ORB orb = ORB.init(new String[0], props);
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            rootCtx = NamingContextExtHelper.narrow(objRef);
+            
+            nc[0] = new NameComponent("Bathroom Context", "Context");
+            nc[1] = new NameComponent("Bathroom Service", "Object");
+            
+            org.omg.CORBA.Object objBathRoom = rootCtx.resolve(nc);
+            Bathroom bathroom = BathroomHelper.narrow(objBathRoom);
+            
+            switch (method) {
+                case "turnimmersionOff":
+                    return bathroom.turnImmersionOff();
+                case "turnimmersionOn":
+                    return bathroom.turnImmersionOn();
+                case "turnfanOn":
+                    return bathroom.turnFanOn();
+                case "turnfanOff":
+                    return bathroom.turnFanOff();
+                default:
+                    return "Unsupported Method";
+            }
+            
+        } catch (NotFound e) {
+            return "Not Found";
+        } catch (CannotProceed e) {
+            return "Cannot Proceed";
+        } catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
+            return "Invalid Name";
+        } catch (InvalidName ex) {
+            return "Invalid Name";
+        }
+    }
 }
