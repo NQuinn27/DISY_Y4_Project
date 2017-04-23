@@ -17,7 +17,8 @@ import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
-
+import SmartHomeModule.Kitchen;
+import SmartHomeModule.KitchenHelper;
 /**
  *
  * @author niall
@@ -91,6 +92,44 @@ public class SmartHome {
                     return bathroom.turnFanOn();
                 case "turnfanOff":
                     return bathroom.turnFanOff();
+                default:
+                    return "Unsupported Method";
+            }
+            
+        } catch (NotFound e) {
+            return "Not Found";
+        } catch (CannotProceed e) {
+            return "Cannot Proceed";
+        } catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
+            return "Invalid Name";
+        } catch (InvalidName ex) {
+            return "Invalid Name";
+        }
+    }
+    
+    public static String kitchenHandler(String method) {
+        try {
+            NameComponent nc[]= new NameComponent[2];    
+            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49001");
+            ORB orb = ORB.init(new String[0], props);
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            rootCtx = NamingContextExtHelper.narrow(objRef);
+            
+            nc[0] = new NameComponent("Kitchen Context", "Context");
+            nc[1] = new NameComponent("Kitchen Service", "Object");
+            
+            org.omg.CORBA.Object objKitchen = rootCtx.resolve(nc);
+            Kitchen kitchen = KitchenHelper.narrow(objKitchen);
+            
+            switch (method) {
+                case "turnboilerOff":
+                    return kitchen.turnBoierOff();
+                case "turnboilerOn":
+                    return kitchen.turnBoilerOn();
+                case "turnheatingOn":
+                    return kitchen.turnHeatingOn();
+                case "turnheatingOff":
+                    return kitchen.turnHeatingOff();
                 default:
                     return "Unsupported Method";
             }
