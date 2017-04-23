@@ -30,6 +30,7 @@ public class HTTPServer {
         server.createContext("/livingroom", new LivingRoomHandler());
         server.createContext("/bathroom", new BathroomHandler());
         server.createContext("/kitchen", new KitchenHandler());
+        server.createContext("/outdoor", new OutDoorHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
     }
@@ -111,6 +112,19 @@ public class HTTPServer {
         public void handle(HttpExchange t) throws IOException {
             String query = t.getRequestURI().getQuery();
             String res = SmartHome.kitchenHandler(query);
+            System.out.print(res);
+            t.sendResponseHeaders(200, res.length());
+            OutputStream os = t.getResponseBody();
+            os.write(res.getBytes());
+            os.close();
+        }
+    }
+    
+    static class OutDoorHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange t) throws IOException {
+            String query = t.getRequestURI().getQuery();
+            String res = SmartHome.outDoorHandler(query);
             System.out.print(res);
             t.sendResponseHeaders(200, res.length());
             OutputStream os = t.getResponseBody();

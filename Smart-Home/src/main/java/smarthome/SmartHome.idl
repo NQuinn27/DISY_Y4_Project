@@ -21,12 +21,11 @@ module SmartHomeModule
 
  interface Outdoors
    {
-    string getGardenLightStatus();
-    void setLightStatus(); 
-    void lockDoor();
-    void unlockDoor();
-    void openGate();
-    string closeGate();     
+    string turnOnOutDoorLights();
+    string turnOffOutDoorLights(); 
+    string lockGate();
+    string unlockGate();
+
    };
 
    interface Bathroom {

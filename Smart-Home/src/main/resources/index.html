@@ -22,7 +22,7 @@ and open the template in the editor.
         <div class="alert"></div>
         <div class="container">
           <div class="row">
-            <div class="col-4">
+            <div class="col">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Living Room </h3>
@@ -35,7 +35,7 @@ and open the template in the editor.
                 </div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Kitchen </h3>
@@ -48,7 +48,7 @@ and open the template in the editor.
                 </div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Bathroom </h3>
@@ -59,8 +59,22 @@ and open the template in the editor.
                   <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnfanOn')">Turn Fan On</button></div>
                   <div class="col"><button type="button" class="btn" onclick="fetch('bathroom?turnfanOff')">Turn Fan Off</button></div>
                 </div>
+              </div> <div class="col">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">OutDoor </h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col"><button type="button" class="btn" onclick="fetch('outdoor?turnonoutDoorLights')">Outdoor lights on</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('outdoor?turnoffoutDoorLights')">Outdoor lights off</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('outdoor?lockgate')">Lock Gate</button></div>
+                  <div class="col"><button type="button" class="btn" onclick="fetch('outdoor?unlockgate')">Unlock Gate</button></div>
+                </div>
               </div>
             </div>
+            </div>
+
+
           </div>
         </div>
     </body>

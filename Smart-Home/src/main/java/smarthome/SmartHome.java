@@ -19,6 +19,8 @@ import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import SmartHomeModule.Kitchen;
 import SmartHomeModule.KitchenHelper;
+import SmartHomeModule.Outdoors;
+import SmartHomeModule.OutdoorsHelper;
 /**
  *
  * @author niall
@@ -130,6 +132,44 @@ public class SmartHome {
                     return kitchen.turnHeatingOn();
                 case "turnheatingOff":
                     return kitchen.turnHeatingOff();
+                default:
+                    return "Unsupported Method";
+            }
+            
+        } catch (NotFound e) {
+            return "Not Found";
+        } catch (CannotProceed e) {
+            return "Cannot Proceed";
+        } catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
+            return "Invalid Name";
+        } catch (InvalidName ex) {
+            return "Invalid Name";
+        }
+    }
+
+public static String outDoorHandler(String method) {
+        try {
+            NameComponent nc[]= new NameComponent[2];    
+            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "49001");
+            ORB orb = ORB.init(new String[0], props);
+            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            rootCtx = NamingContextExtHelper.narrow(objRef);
+            
+            nc[0] = new NameComponent("OutDoor Context", "Context");
+            nc[1] = new NameComponent("OutDoor Service", "Object");
+            
+            org.omg.CORBA.Object objRefOutDoor = rootCtx.resolve(nc);
+            Outdoors outdoor = OutdoorsHelper.narrow(objRefOutDoor);
+            
+            switch (method) {
+                case "turnonoutDoorLights":
+                    return outdoor.turnOnOutDoorLights();
+                case "turnoffoutDoorLights":
+                    return outdoor.turnOffOutDoorLights();
+                case "lockgate":
+                    return outdoor.lockGate();
+                case "unlockgate":
+                    return outdoor.unlockGate();
                 default:
                     return "Unsupported Method";
             }

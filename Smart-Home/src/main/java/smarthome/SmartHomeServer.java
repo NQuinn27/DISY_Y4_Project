@@ -19,6 +19,7 @@ public class SmartHomeServer {
                     LivingRoomServant livingRoomRef = new LivingRoomServant();
                     BathroomServant bathroomRef = new BathroomServant();
                     KitchenServant kitchenRef = new KitchenServant();
+                    OutDoorServant outdoorRef = new OutDoorServant();
                     
                     
 
@@ -66,6 +67,21 @@ public class SmartHomeServer {
                     //Binding the name to an object that is stored in the Naming Context
                     Ctx3.rebind(nc, kitchenRef);
                     System.out.println("Object '\"Kitchen Service' added to Kitchen Context.");
+                    
+                     //Add OutDoor to root
+                    nc[0] = new NameComponent("OutDoor Context", "Context");
+                    NamingContext Ctx4 = rootCtx.bind_new_context(nc);
+                    System.out.println("Context 'OutDoor Context' added to Name Space.");
+                    
+                     //Add OutDoor Service to OutDoor Context
+                    nc[0] = new NameComponent("OutDoor Service", "Object");
+                    //NameComponent path[] = {nc};
+                    //Binding the name to an object that is stored in the Naming Context
+                    Ctx4.rebind(nc, outdoorRef);
+                    System.out.println("Object '\"OutDoor Service' added to OutDoor Context.");  
+                    
+                    
+                    
                     
                     
                     
