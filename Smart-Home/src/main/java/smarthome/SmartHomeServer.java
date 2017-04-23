@@ -18,6 +18,8 @@ public class SmartHomeServer {
 
                     LivingRoomServant livingRoomRef = new LivingRoomServant();
                     BathroomServant bathroomRef = new BathroomServant();
+                    KitchenServant kitchenRef = new KitchenServant();
+                    
                     
 
                     //connecting the servant to the orb
@@ -46,12 +48,26 @@ public class SmartHomeServer {
                     NamingContext Ctx2 = rootCtx.bind_new_context(nc);
                     System.out.println("Context 'Bathroom Context' added to Name Space.");
                     
-                     //Add Living Room Service to Living Room Context
+                     //Add Bathroom Service to Bathroom Context
                     nc[0] = new NameComponent("Bathroom Service", "Object");
                     //NameComponent path[] = {nc};
                     //Binding the name to an object that is stored in the Naming Context
                     Ctx2.rebind(nc, bathroomRef);
-                    System.out.println("Object '\"Bathroom Service' added to Living Room Context.");
+                    System.out.println("Object '\"Bathroom Service' added to BathRoom Context.");
+                    
+                     //Add Kitchen to root
+                    nc[0] = new NameComponent("Kitchen Context", "Context");
+                    NamingContext Ctx3 = rootCtx.bind_new_context(nc);
+                    System.out.println("Context 'Kitchen Context' added to Name Space.");
+                    
+                     //Add Kitchen Service to Kitchen Context
+                    nc[0] = new NameComponent("Kitchen Service", "Object");
+                    //NameComponent path[] = {nc};
+                    //Binding the name to an object that is stored in the Naming Context
+                    Ctx3.rebind(nc, kitchenRef);
+                    System.out.println("Object '\"Kitchen Service' added to Kitchen Context.");
+                    
+                    
                     
                     
                     // wait for invocations from clients
