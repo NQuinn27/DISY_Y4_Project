@@ -29,6 +29,7 @@ public class HTTPServer {
         server.createContext("/index.html", new IndexHandler());
         server.createContext("/livingroom", new LivingRoomHandler());
         server.createContext("/bathroom", new BathroomHandler());
+        server.createContext("/kitchen", new BathroomHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
     }
@@ -104,4 +105,20 @@ public class HTTPServer {
             os.close();
         }
     }
+    
+    static class KitchenHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange t) throws IOException {
+            String query = t.getRequestURI().getQuery();
+            String res = SmartHome.kitchenHandler(query);
+            System.out.print(res);
+            t.sendResponseHeaders(200, res.length());
+            OutputStream os = t.getResponseBody();
+            os.write(res.getBytes());
+            os.close();
+        }
+    }
+    
+    
+    
 }

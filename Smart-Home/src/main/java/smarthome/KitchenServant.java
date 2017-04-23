@@ -15,7 +15,7 @@ public class KitchenServant extends SmartHomeModule._KitchenImplBase{
         return "The Boiler is now On";
     }
     public String turnBoierOff(){
-        return "The Boilerw Off";
+        return "The Boiler is now Off";
     }
     public String turnHeatingOn(){
         return "The Heating is now On!";
