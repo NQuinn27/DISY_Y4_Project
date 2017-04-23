@@ -12,11 +12,11 @@ module SmartHomeModule
 
    interface Kitchen
    {
-    string getLightStatus();
-    void lockDoor();
-    void unlockDoor();
-    void setTemp();
-    string getTemp();  	
+    string turnBoilerOn();
+    string turnBoierOff();
+    string turnHeatingOn();
+    string turnHeatingOff();
+    
    };
 
  interface Outdoors

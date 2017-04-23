@@ -11,25 +11,17 @@ package smarthome;
  * @author andrey
  */
 public class KitchenServant extends SmartHomeModule._KitchenImplBase{
-    public String getLightStatus() {
-        return "";
+ public String turnBoilerOn(){
+        return "The Boiler is now On";
     }
-    
-    public void lockDoor() {
-        
+    public String turnBoierOff(){
+        return "The Boilerw Off";
     }
-    
-    public void unlockDoor() {
-        
+    public String turnHeatingOn(){
+        return "The Heating is now On!";
     }
-    public String getTemp(){
-        return "";
-    }
-    public void setTemp(){
-        
-    }
-        
-    
-    
+    public String turnHeatingOff(){
+        return "The Heating is now Off!";
+    }   
     
 }
