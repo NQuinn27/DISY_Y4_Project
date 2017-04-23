@@ -29,7 +29,7 @@ public class HTTPServer {
         server.createContext("/index.html", new IndexHandler());
         server.createContext("/livingroom", new LivingRoomHandler());
         server.createContext("/bathroom", new BathroomHandler());
-        server.createContext("/kitchen", new BathroomHandler());
+        server.createContext("/kitchen", new KitchenHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
     }
